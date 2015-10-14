@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -230,6 +231,9 @@ public class SettingsFragment extends NavigationDrawerFragment implements Server
               Intent intent = new Intent("com.p2c.thelife.Initial");
               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
               startActivity(intent);
+
+              FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+              fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
             }
           }).show();
