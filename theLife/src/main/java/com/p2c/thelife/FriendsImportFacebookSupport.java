@@ -10,6 +10,7 @@ import com.p2c.thelife.model.FriendModel;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ import android.widget.Toast;
  */
 public class FriendsImportFacebookSupport implements AddFriendListener {
 	
-	private static final String TAG = "FriendsImportFacebookSupport";
+	private static final String TAG = "ImportFacebookSupport";
 
 	private class FacebookUserInfo {
 		public final Bitmap bitmap;
@@ -34,13 +35,13 @@ public class FriendsImportFacebookSupport implements AddFriendListener {
 		}
 	}	
 	
-	private Activity m_activity = null;
+	private AppCompatActivity m_activity = null;
 	private FriendsImportSupport m_friendsImportSupport = null;
 	private ArrayList<FacebookUserInfo> m_facebookUserInfos	= null;
 	private int m_facebookUserInfosIndex = 0;
 
 
-	public FriendsImportFacebookSupport(Activity activity) {
+	public FriendsImportFacebookSupport(AppCompatActivity activity) {
 		m_activity = activity;
 	}
 	

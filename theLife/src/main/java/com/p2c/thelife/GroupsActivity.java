@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -14,8 +16,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.AbstractDS.DSRefreshedListener;
 import com.p2c.thelife.model.GroupModel;
@@ -86,13 +86,13 @@ public class GroupsActivity extends SlidingMenuFragmentActivity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.groups, menu);
+		getMenuInflater().inflate(R.menu.groups, menu);
 		return true;
 	}
 	
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_help) {
 			Intent intent = new Intent("com.p2c.thelife.HelpContainer");
 			intent.putExtra("layout", R.layout.activity_groups_help);

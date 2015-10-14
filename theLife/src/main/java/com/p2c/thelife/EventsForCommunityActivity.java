@@ -5,12 +5,12 @@ import org.json.JSONObject;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.Server.ServerListener;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.EventModel;
@@ -143,12 +143,12 @@ public class EventsForCommunityActivity extends SlidingMenuActivity implements E
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.events_for_community, menu);
+		getMenuInflater().inflate(R.menu.events_for_community, menu);
 		return true;
 	}
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_help) {
 			Intent intent = new Intent("com.p2c.thelife.HelpContainer");
 			intent.putExtra("layout", R.layout.activity_events_for_community_help);

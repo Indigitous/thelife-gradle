@@ -1,21 +1,13 @@
 package com.p2c.thelife;
 
-import java.io.IOException;
-import java.util.Locale;
-
-import org.json.JSONObject;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,9 +27,15 @@ import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.GooglePlayServicesAvailabilityException;
 import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.Scopes;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.UserModel;
 import com.testflightapp.lib.TestFlight;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.Locale;
 
 
 /**
@@ -59,9 +57,9 @@ public class SetupActivity extends SetupRegisterActivityAbstract implements Serv
 		setContentView(R.layout.activity_setup);
 		
 		// hide the action bar; can only be done with later versions of Android
-		if (Build.VERSION.SDK_INT >= 11) {
-			getActionBar().hide();
-		}
+//		if (Build.VERSION.SDK_INT >= 11) {
+//			getSupportActionBar().hide();
+//		}
 	}
     
     @Override
@@ -192,7 +190,7 @@ Utilities.showInfoToastSafe(SetupActivity.this, "Received Google OAuth User Acco
 					String token = null;
 Utilities.showInfoToastSafe(SetupActivity.this, "Attempting to get Google User Token ", Toast.LENGTH_LONG);
 					token = GoogleAuthUtil.getToken(SetupActivity.this, params[0], 
-								"audience:server:client_id:" + TheLifeConfiguration.GOOGLE_WEB_CLIENT_ID);
+								"oauth2:" + Scopes.PROFILE);// + TheLifeConfiguration.GOOGLE_WEB_CLIENT_ID);
 Utilities.showInfoToastSafe(SetupActivity.this, "Received Google User Token " + (token != null ? "NOT NULL" : "NULL") , Toast.LENGTH_LONG);
 					Log.i(TAG, "successfully got Google account token for account " + params[0]);
 					

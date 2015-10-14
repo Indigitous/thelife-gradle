@@ -10,11 +10,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.model.FriendModel;
 
 
@@ -41,12 +41,12 @@ public class FriendsImportActivity extends SlidingMenuFragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.friends_import, menu);
+		getMenuInflater().inflate(R.menu.friends_import, menu);
 		return true;
 	}
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			Intent intent = new Intent("com.p2c.thelife.Friends");
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);			

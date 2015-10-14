@@ -2,13 +2,13 @@ package com.p2c.thelife;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.EventsDS;
 import com.p2c.thelife.model.UserModel;
@@ -119,13 +119,13 @@ public class EventsForOwnerActivity extends SlidingMenuActivity implements Event
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.events_for_owner, menu);
+		getMenuInflater().inflate(R.menu.events_for_owner, menu);
 		return true;
 	}
 	
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {		
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			m_support.slideOpen();
 		} else if (item.getItemId() == R.id.action_help) {

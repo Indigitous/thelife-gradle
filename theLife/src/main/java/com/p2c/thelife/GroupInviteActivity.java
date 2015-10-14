@@ -10,11 +10,11 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.GroupModel;
 import com.p2c.thelife.model.RequestModel;
@@ -49,13 +49,13 @@ public class GroupInviteActivity extends SlidingMenuFragmentActivity implements 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.group_invite, menu);		
+		getMenuInflater().inflate(R.menu.group_invite, menu);
 		return true;
 	}
 	
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_help) {
 			Intent intent = new Intent("com.p2c.thelife.HelpContainer");
 			intent.putExtra("layout", R.layout.activity_group_invite_help);

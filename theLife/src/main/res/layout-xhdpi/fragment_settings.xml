@@ -14,20 +14,19 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:background="#d0d4d9"        
+        android:background="#d0d4d9"
         android:text="@string/show_license"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#677073"        
-        android:onClick="showLicense" />   
+        android:textColor="#677073" />
 
 
 	<LinearLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:paddingBottom="2dp"
-	    android:paddingLeft="2dp"
-	    android:paddingRight="2dp"
-	    android:paddingTop="6dp"
+	    android:paddingBottom="8dp"
+	    android:paddingLeft="8dp"
+	    android:paddingRight="8dp"
+	    android:paddingTop="12dp"
 	    android:orientation="vertical">
 	
 	    <LinearLayout
@@ -39,34 +38,31 @@
 	    
 		    <ImageView
 		        android:id="@+id/settings_image"
-		        android:layout_width="140dp"
-		        android:layout_height="140dp"
-			    android:onClick="selectImage"	        
+		        android:layout_width="160dp"
+		        android:layout_height="160dp"
 		        android:src="@drawable/generic_avatar_image" />
 		    
     	    <Button
     	        android:id="@+id/settings_update_photo_prompt"
     	        android:visibility="gone"
-    	        android:layout_width="140dp"
+    	        android:layout_width="160dp"
 			    android:layout_height="wrap_content"    	        
-    	        android:layout_marginLeft="-141dp"
+    	        android:layout_marginLeft="-160dp"
     	        android:layout_gravity="bottom"
-    	        android:background="@drawable/round_green_double_shadow"
     	        android:gravity="center"
-    	        android:onClick="selectImage"
     	        android:padding="0dp"
-    	        android:text="@string/settings_update_photo_prompt_short"
+    	        android:text="@string/settings_update_photo_prompt"
 				android:shadowColor="#23282A"
 				android:shadowDx="0"
 				android:shadowDy="-1"
 				android:shadowRadius="0.001"    	        
-    	        android:textColor="#FFFFFFFF" />			    
+    	        android:textColor="#FFFFFFFF" />
 		    
 		    <LinearLayout 
 		    	android:layout_width="fill_parent"
 	    		android:layout_height="match_parent"
 	    		android:gravity="center"
-	    		android:layout_marginLeft="2dp"
+	    		android:layout_marginLeft="10dp"
 	    		android:paddingLeft="0dp"
 	    		android:paddingRight="0dp"    		
 	    		android:orientation="vertical" >
@@ -102,6 +98,15 @@
 			        android:text="@string/rotate_cw" />
 			</LinearLayout>
 		</LinearLayout>
+	
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingTop="16dp"
+	        android:textColor="#a7a7a7"
+	        android:text="@string/your_information"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
 	
 	    <EditText
 	        android:id="@+id/settings_first_name"
@@ -139,18 +144,19 @@
 	
 	    <Button
 	        android:id="@+id/button1"
-	        android:background="@drawable/round_green_double_shadow"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="8dp"
+			android:paddingTop="20dp"
+			android:paddingBottom="20dp"
+	        android:layout_marginTop="16dp"
 	        android:layout_gravity="center"
 	        android:text="@string/save"
 	        android:textColor="#FFFFFF"
 			android:shadowColor="#23282A"
 			android:shadowDx="0"
 			android:shadowDy="-1"
-			android:shadowRadius="0.001"         
-	        android:onClick="setUserProfile"/>    
+			android:shadowRadius="0.001"
+			android:backgroundTint="@color/material_deep_teal_500" />
 	
 	</LinearLayout>
 </RelativeLayout>

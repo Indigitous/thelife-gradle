@@ -2,11 +2,11 @@ package com.p2c.thelife;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.DeedModel;
 
@@ -52,12 +52,12 @@ public class ResourcesDeedActivity extends SlidingMenuFragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.resources_deed, menu);
+		getMenuInflater().inflate(R.menu.resources_deed, menu);
 		return true;
 	}
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			Intent intent = new Intent("com.p2c.thelife.Resources");
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);			

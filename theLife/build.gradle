@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 17
+    compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.p2c.thelife"
         minSdkVersion 10
-        targetSdkVersion 18
+        targetSdkVersion 22
 
         testApplicationId "com.p2c.thelife.test"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
@@ -27,12 +27,11 @@ android {
 }
 
 dependencies {
-    compile project(':sliding_menu_library')
+//    compile project(':sliding_menu_library')
     compile project(':facebookSDK')
-    compile 'com.android.support:support-v4:18.0.0'
-    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
-    compile 'com.android.support:support-v4:18.0.0'
     compile 'com.google.android.gms:play-services:+'
+    compile 'com.android.support:support-v4:22.1.1'
+    compile 'com.android.support:appcompat-v7:22.1.1'
     compile files('libs/TestFlightLib.jar')
     compile files('libs/commons-codec-1.6.jar')
     compile files('libs/commons-logging-1.1.1.jar')

@@ -8,12 +8,12 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.Server.ServerListener;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.FriendModel;
@@ -66,7 +66,7 @@ public class FriendSettingsActivity extends SlidingMenuFragmentActivity implemen
 		super.onCreateOptionsMenu(menu);
 		
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.friend_settings, menu);
+		getMenuInflater().inflate(R.menu.friend_settings, menu);
 		return true;
 	}
 	
@@ -143,7 +143,7 @@ public class FriendSettingsActivity extends SlidingMenuFragmentActivity implemen
 	
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			Intent intent = new Intent("com.p2c.thelife.EventsForFriend");
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);						

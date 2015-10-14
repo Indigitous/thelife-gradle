@@ -2,10 +2,10 @@ package com.p2c.thelife;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.WebView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 
 
 /**
@@ -56,13 +56,13 @@ public class HelpContainerActivity extends SlidingMenuActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.help_container, menu);
+		getMenuInflater().inflate(R.menu.help_container, menu);
 		return true;
 	}
 	
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			Intent intent = new Intent(m_home);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);			

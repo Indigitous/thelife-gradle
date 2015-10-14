@@ -10,6 +10,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -17,8 +19,6 @@ import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.AbstractDS.DSRefreshedListener;
 import com.p2c.thelife.model.DeedModel;
@@ -100,7 +100,7 @@ public class ResourcesActivity extends SlidingMenuFragmentActivity implements DS
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.resources, menu);
+		getMenuInflater().inflate(R.menu.resources, menu);
 		return true;
 	}
 	
@@ -124,7 +124,7 @@ public class ResourcesActivity extends SlidingMenuFragmentActivity implements DS
 	
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_help) {
 			Intent intent = new Intent("com.p2c.thelife.HelpContainer");
 			intent.putExtra("layout", R.layout.activity_resources_help);

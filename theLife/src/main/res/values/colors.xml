@@ -5,5 +5,9 @@
     
     <color name="event_background">#FFFFFF</color>
     <color name="app_menu_owner_background">#34383A</color>
+
+    <color name="primaryColor">#ff45494b</color>
+    <color name="primaryColorDark">#ff34383A</color>
+    <color name="primaryColorLight">#ffd0d4d9</color>
     
 </resources>

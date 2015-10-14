@@ -38,7 +38,8 @@ public class InitialActivity extends Activity {
 		// Check to see if the user has authenticated
 		if (TheLifeConfiguration.getOwnerDS().isValidOwner()) {
 			// authenticated user, so main screen
-			Intent intent = new Intent("com.p2c.thelife.EventsForCommunity");
+//			Intent intent = new Intent("com.p2c.thelife.EventsForCommunity");
+			Intent intent = new Intent("com.p2c.thelife.DrawerActivity");
 			startActivity(intent);
 		} else {
 			// not authenticated user, so delete the cache files

@@ -7,12 +7,12 @@ import org.json.JSONObject;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.p2c.thelife.config.TheLifeConfiguration;
 import com.p2c.thelife.model.RequestModel;
 import com.p2c.thelife.model.RequestsDS;
@@ -74,7 +74,7 @@ public class RequestsActivity extends SlidingMenuFragmentActivity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.requests, menu);
+		getMenuInflater().inflate(R.menu.requests, menu);
 		return true;
 	}
 	
@@ -195,7 +195,7 @@ public class RequestsActivity extends SlidingMenuFragmentActivity
 	}
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {	
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			m_support.slideOpen();		
 		}
