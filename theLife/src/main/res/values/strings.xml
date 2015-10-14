@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TheLife</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_help">Help</string>
+    <string name="action_pledge">Prayers</string>
+    <string name="action_search">Search</string>
+    <string name="action_new">New</string>
+    <string name="action_logout">Log out</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="threshold_unknown_short">Unknown</string>
+    <string name="threshold_unknown_medium">Unknown</string>
+    <string name="go">Go For It!</string>
+    <string name="confirm_prayer_support">Ask your group(s) for prayer support?</string>
+    <string name="no">No</string>
+    <string name="no_thanks">No thanks</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="delete">Delete</string>
+    <string name="my_groups">My Groups</string>
+    <string name="search_hint">Search Group Names</string>
+    <string name="import_friends_from">Import friends from:</string>
+    <string name="import_by_phone">Mobile Phone</string>
+    <string name="import_by_facebook">Facebook</string>
+    <string name="import_manually">Manual Entry</string>
+    <string name="import_label">Add</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="create_group">Create Group</string>
+    <string name="group_name">Group Name</string>
+    <string name="group_description">Description</string>
+    <string name="login">Log in</string>
+    <string name="login_prompt">Please login to your account.</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="password_confirm">Password Confirm</string>
+    <string name="register_prompt">Please register for an account.</string>
+    <string name="different_passwords_error">Passwords must be the same</string>
+
+    <!-- Note these threshold arrays must be in the same order as FriendModel.Threshold -->
+    <string-array name="thresholds_short_all">
+        <item>New Contact</item>
+        <item>Build Trust</item>
+        <item>Becoming Curious</item>
+        <item>Opening to Change</item>
+        <item>Start Seeking</item>
+        <item>Entering</item>
+        <item>Christian</item>
+    </string-array>
+    <string-array name="thresholds_medium_all">
+        <item>New Contact</item>
+        <item>Building Trust</item>
+        <item>Becoming Curious about Jesus</item>
+        <item>Opening up to Change</item>
+        <item>Start Seeking God</item>
+        <item>Entering the Kingdom</item>
+        <item>Follower of Jesus</item>
+    </string-array>
+    <string-array name="thresholds_medium_change">
+        <item>Trusting a Christian</item>
+        <item>Becoming Curious about Jesus</item>
+        <item>Opening up to Change</item>
+        <item>Start Seeking God</item>
+        <item>Entering the Kingdom</item>
+        <item>Follower of Jesus</item>
+    </string-array>
+
+    <string name="delete_friend_prompt">Delete friend &lt;b>%1$s&lt;/b>?</string>
+    <string name="friend">friend</string>
+    <string name="user">user</string>
+    <string name="request_join_group_prompt">Do you wish to join %1$s?</string>
+    <string name="waiting">Waiting&#8230;"</string>
+    <string name="creating_new_group">Creating new group"</string>
+    <string name="deleting_friend">Deleting friend"</string>
+    <string name="adding_friend">Adding friend"</string>
+    <string name="requesting_to_join_group">"Requesting to join group"</string>
+    <string name="retrieving_account">"Retrieving account"</string>
+    <string name="creating_account">"Creating account"</string>
+    <string name="retrieving_configuration">"Retrieving configuration"</string>
+    <string name="request_membership_prompt">Do you want to add this person to your group?</string>
+    <string name="request_invite_prompt">Do you want to join this group?</string>
+    <string name="joining_group">Joining group</string>
+    <string name="adding_new_member">Adding new member to group</string>
+    <string name="membership_request_description">&lt;b>%1$s&lt;/b> wants to join your group &lt;b>%2$s&lt;/b>.</string>
+    <string name="membership_request_accepted_description">Your request to join group &lt;b>%1$s&lt;/b> has been accepted.</string>
+    <string name="membership_request_rejected_description">Your request to join group &lt;b>%1$s&lt;/b> has been declined.</string>
+    <string name="invite_request_description">&lt;b>%1$s&lt;/b> invites you to join group &lt;b>%2$s&lt;/b>.</string>
+    <string name="invite_request_accepted_description">&lt;b>%1$s&lt;/b> has accepted your invitation to join group &lt;b>%2$s&lt;/b>.</string>
+    <string name="invite_request_rejected_description">&lt;b>%1$s&lt;/b> has declined your invitation to join group &lt;b>%2$s&lt;/b>.</string>
+    <string name="rejecting_request">Rejecting request</string>
+    <string name="creating_new_event">Creating new event</string>
+    <string name="email">Email Address</string>
+    <string name="phone">Mobile Phone Number</string>
+    <string name="storing_account">"Storing account"</string>
+    <string name="storing_friend_account">"Storing account"</string>
+    <string name="delete_group_prompt">Delete group &lt;b>%1$s&lt;/b>?</string>
+    <string name="deleting_group">Deleting group"</string>
+    <string name="cannot_delete_group">You cannot delete group &lt;b>%1$s&lt;/b> because you are not the group leader.</string>
+    <string name="deleting_user">Removing user from group"</string>
+    <string name="delete_user_from_group_prompt">Delete user &lt;b>%1$s&lt;/b> from group &lt;b>%2$s&lt;/b>?</string>
+    <string name="cannot_delete_user_from_group">You cannot delete user &lt;b>%1$s&lt;/b> from group &lt;b>%2$s&lt;/b> because you are not the group leader.</string>
+    <string name="invite_person_to_group">Invite person to group</string>
+    <string name="inviting_person">Inviting person</string>
+    <string name="pledge_error_from_server">Error sending prayer pledge to server.</string>
+    <string name="change_threshold_prompt">Change threshold?</string>
+    <string name="pray">Pray</string>
+    <string name="prayed">Prayed</string>
+    <string name="people_prayed_singular">1 Person prayed</string>
+    <string name="people_prayed_plural">%1$d People prayed</string>
+    <string name="title_community">Community</string>
+    <string name="title_events">Events</string>
+    <string name="title_help">Help</string>
+    <string name="title_friends">My Friends</string>
+    <string name="title_search_groups">Search Groups</string>
+    <string name="title_groups">My Groups</string>
+    <string name="title_activities">Activities</string>
+    <string name="title_activity">Activity</string>
+    <string name="title_group">My Group</string>
+    <string name="title_setup">Set Up</string>
+    <string name="title_requests">Notifications</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_register">Register</string>
+    <string name="title_friend_import">Add Friend</string>
+    <string name="title_new_user_help">Introduction</string>
+    <string name="title_friend_settings">My Friend</string>
+    <string name="title_friends_help">Help</string>
+    <string name="title_groups_help">Help</string>
+    <string name="login_failed">Incorrect Login</string>
+    <string name="registration_failed">Incorrect Registration</string>
+    <string name="registration_successful">You are now registered.</string>
+    <string name="querying">Querying</string>
+    <string name="confirm_update_image">Update your photo?</string>
+    <string name="get_camera_photo">From camera"</string>
+    <string name="get_gallery_photo">From gallery</string>
+    <string name="processing_image">Processing image</string>
+    <string name="friend_import_error">Error importing friend</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="logout_prompt">Do you want to log out?</string>
+    <string name="no_community_events">No events to show.</string>
+    <string name="no_friend_events">No events to show.</string>
+    <string name="no_groups">No groups to show.</string>
+    <string name="no_friends">No friends to show.</string>
+    <string name="no_requests">No notifications to show.</string>
+    <string name="null_category_name">Other</string>
+    <string name="null_category_description">Other activities</string>
+    <string name="done">Done</string>
+    <string name="deleting_notification">Deleting notification</string>
+    <string name="change_threshold_label">Change\nThreshold</string>
+
+    <!-- added May 7+, 2013 -->
+    <string name="user_profile_updated">Settings updated</string>
+    <string name="get_started_by_adding_friend">Get started by adding a friend!</string>
+    <string name="activity_friend_whats_next">What\'s Next?</string>
+    <string name="error_prefix">Error:</string>
+    <string name="error_bad_connection">Bad Connection</string>
+    <string name="license">&lt;h4>Copyright \u00a9 by Power To Change Canada. All rights reserved.&lt;/h4>
+&lt;hr />        
+&lt;p>Apache HttpComponents Client&lt;br />
+Copyright 1999-2012 The Apache Software Foundation
+&lt;/p>
+&lt;p>
+This product includes software developed at&lt;br />
+The Apache Software Foundation (http://www.apache.org/).
+&lt;/p>
+&lt;hr />
+&lt;p>
+Contains Facebook software made available under the Apache License, version 2.0; http://www.apache.org/licenses/.
+&lt;/p></string>
+    <string name="title_license">License</string>
+    <string name="action_license">License</string>
+    <string name="confirm_activity">Do you want to do this activity?</string>
+
+    <!-- added/changed July 10+, 2013 -->
+    <string name="show_license">Show License Information</string>
+    <string name="title_resources">Resources</string>
+    <string name="action_filter">Filter</string>
+    <string name="filter">Filter</string>
+    <string name="threshold_filter_prompt">Filter by thresholds</string>
+    <string name="title_register_manually">Register</string>
+    <string name="choose_register_method_prompt">Choose how to register:</string>
+    <string name="manually">Manually</string>
+    <string name="choose_login_method_prompt">Choose how to log in:</string>
+    <string name="title_friends_import">Import Friends</string>
+    <string name="import_friend_error">Error when importing friend</string>
+    <string name="all_thresholds">All Thresholds</string>
+    <string name="no_thresholds">No Thresholds</string>
+    <string name="multiple_thresholds">Multiple Thresholds</string>
+    <string name="recoverable_register_error">Error encountered: please register again %1$s</string>
+    <string name="recoverable_login_error">Error encountered: please login again %1$s</string>
+    <string name="title_group_invite">Invite To Group</string>
+    <string name="invite_person_from">Invite person from:</string>
+    <string name="invite_by_email_or_mobile">(enter email OR mobile)</string>
+    <string name="invite_contact_by_email">Email Contacts</string>
+    <string name="invite_contact_by_sms">SMS Contacts</string>
+    <string name="invite_by_facebook">Facebook</string>
+    <string name="invite_manually">Manual Entry</string>
+    <string name="invite_person_error">Error when inviting person</string>
+    <string name="person_invited_by_email">The invitation email was sent.</string>
+    <string name="person_invited_by_sms">The invitation SMS was sent.</string>
+    <string name="person_invited">The invitation was sent.</string>
+<!-- <string name="sms_invitation">%1$s invites you to join TheLife App beta test! You can download it from Google Play at http://p2c.sh.</string> -->
+    <string name="sms_invitation">%1$s invites you to join TheLife App! You can download it from Google Play at http://play.google.com/store/apps/details?id=com.p2c.thelife.</string>
+    <string name="setup_prompt">You are about to start an incredible faith adventure</string>
+    <string name="friend_info_is_private">TheLife App will not make any contact with your friends; contact information is only stored for your reference.</string>
+    <string name="title_events_for_user">Events</string>
+    <string name="activity_owner_edit_profile">Edit Profile</string>
+    <string name="no_user_events">There are no events to show.</string>
+    <string name="upload_image">Upload image</string>
+    <string name="rotate_ccw">Rotate left</string>
+    <string name="rotate_cw">Rotate right</string>
+    <string name="your_information">Your Information</string>
+    <string name="save">Save</string>
+    <string name="settings_update_photo_prompt">Update Your Photo</string>
+    <string name="settings_update_photo_prompt_short">Set Photo</string>
+    <string name="register">Create account</string>
+    <string name="gcm_error">Unable to access push notification service. Please log out and log in again.</string>
+    <string name="notification_invitation_delivered">Invite from %1$s</string>
+    <string name="notification_request_delivered">Request from %1$s</string>
+    <string name="notification_group">For group &lt;b>%1$s&lt;/b></string>
+    <string name="notification_invitation_accepted">Invitation accepted</string>
+    <string name="notification_request_accepted">Request accepted</string>
+    <string name="notification_invitation_rejected">Invitation declined</string>
+    <string name="notification_request_rejected">Request declined</string>
+    <string name="message_received">Message received from another user.</string>
+    <string name="messages_received">Messages received from other users.</string>
+    <string name="notifications_received">Notifications received</string>
+    <string name="notifications_pending">Notifications are pending.</string>
+    <string name="events_received">Events received</string>
+    <string name="events_pending">Events are pending.</string>
+    <string name="app_id">565568403501222</string>
+    <string name="facebook_error">facebook error</string>
+    <string name="title_friends_import_facebook">Import Friends</string>
+    <string name="adding_friends">Adding friends"</string>
+    <string name="facebook_account_error">Facebook account error</string>
+    <string name="cannot_delete_leader_from_group">You cannot delete the group leader from the group.</string>
+    <string name="group_member">Group Member</string>
+    <string name="group_leader">Group Leader</string>
+    
+
+</resources>

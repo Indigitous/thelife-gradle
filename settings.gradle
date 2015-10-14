@@ -1,0 +1,3 @@
+include ':facebookSDK'
+include ':sliding_menu_library'
+include ':theLife'

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:padding="8dp" 
+	android:background="@drawable/round_white_shadow"   
+    android:orientation="vertical" >
+
+    <!--  this works for 800x480:, 60dp/12sp/10sp -->
+    <!--  this works for Nexus 4 1280x760?: 80dp/16sp/12sp -->
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingBottom="2dp"
+	    android:orientation="horizontal" >
+        
+	    <com.p2c.thelife.view.EventUserFriendView
+	        android:id="@+id/event_images"
+	        android:layout_width="@dimen/event_bitmaps_length"
+	        android:layout_height="@dimen/thumbnail_side"
+	        android:padding="0dp"
+	        android:layout_marginRight="@dimen/event_gap_between_bitmaps"
+	        android:contentDescription="@string/user"
+	        android:src="@drawable/generic_avatar_thumbnail" />
+	            
+	   <!-- event description and time -->
+	    <LinearLayout
+	    	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:paddingLeft="4dp"
+	        android:orientation="vertical" >
+	        
+		    <TextView
+		        android:id="@+id/event_time"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="0"
+		        android:layout_gravity="left"
+		        android:text="On wednesday at 17:23" 
+		        android:textColor="#a7a7a7"
+		        android:textSize="12sp" />
+		    	        
+		    <TextView
+		        android:id="@+id/event_description"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_marginTop="4dp"
+		        android:text="Andrew S is talking to Patrick H. about the Gospel."
+		        android:textSize="16sp" />
+	    </LinearLayout>
+	    
+    </LinearLayout>     
+	  
+    <LinearLayout
+		android:id="@+id/event_interactive"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginRight="0dp"
+    	android:paddingTop="4dp"
+    	android:paddingBottom="2dp"
+        android:orientation="horizontal" >
+	     
+		<TextView
+			android:id="@+id/event_people_prayed"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_gravity="center_vertical"
+			android:text="5 People prayed"
+			android:textSize="14sp"
+		    android:textColor="#a7a7a7"	/>	
+        
+    	<ToggleButton
+	        android:id="@+id/event_pledge"
+	        android:layout_margin="0dp"
+	        android:paddingLeft="12dp"
+	        android:paddingRight="12dp"
+	        android:includeFontPadding="false"
+	        android:layout_width="wrap_content"
+	        android:layout_height="36dp"
+	        android:text="@string/pray"
+	        android:textSize="16sp"
+	        android:textOn="@string/prayed"
+	        android:textOff="@string/pray"
+	        android:background="@drawable/roundest_gray"
+	        android:drawableLeft="@drawable/pray_normal"
+	        android:drawablePadding="4dp"
+	        android:onClick="pledgeToPray" />
+	</LinearLayout>    
+
+</LinearLayout>

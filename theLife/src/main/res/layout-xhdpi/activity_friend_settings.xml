@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="6dp"
+    android:paddingTop="8dp"
+    android:orientation="vertical"
+    tools:context=".FriendSettingsActivity" >
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+              
+	    <ImageView
+	        android:id="@+id/friend_settings_image"
+	        android:layout_width="160dp"
+	        android:layout_height="160dp"
+	        android:src="@drawable/generic_avatar_image"
+	        android:onClick="selectImage" />
+	    
+	    <LinearLayout 
+	    	android:layout_width="fill_parent"
+    		android:layout_height="match_parent"
+    		android:gravity="center_vertical"
+    		android:layout_marginLeft="12dp"
+    		android:paddingLeft="0dp"
+    		android:paddingRight="-2dp"    		
+    		android:orientation="vertical" >
+		        
+		    <Button
+		        android:id="@+id/upload_image"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:drawableLeft="@drawable/upload_image"
+		        android:gravity="left|center_vertical"
+		        android:onClick="selectImage"
+		        android:text="@string/upload_image" />
+		    	        
+		    <Button
+		        android:id="@+id/image_rotate_ccw"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:drawableLeft="@drawable/images_rotate_left"
+		        android:gravity="left|center_vertical"
+		        android:onClick="rotateImageCCW"
+		        android:text="@string/rotate_ccw" />
+		    
+		    <Button
+		        android:id="@+id/image_rotate_cw"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:drawableLeft="@drawable/images_rotate_right"
+		        android:gravity="left|center_vertical"
+		        android:onClick="rotateImageCW"
+		        android:text="@string/rotate_cw" />
+		</LinearLayout>
+	</LinearLayout>
+	
+
+
+    <EditText
+        android:id="@+id/friend_settings_first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"        
+        android:ems="10"
+        android:hint="@string/first_name"
+        android:inputType="textCapWords" >
+
+        <requestFocus android:layout_width="wrap_content" />
+
+    </EditText>
+    
+    <EditText
+        android:id="@+id/friend_settings_last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/last_name"
+        android:inputType="textCapWords" />
+    
+    <EditText
+        android:id="@+id/friend_settings_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+    
+    <EditText
+        android:id="@+id/friend_settings_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/phone"
+        android:inputType="phone" />       
+
+    <Button
+        android:id="@+id/button1"
+        android:background="@drawable/round_green_double_shadow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:text="@string/save"
+        android:textColor="#FFFFFF"
+		android:shadowColor="#23282A"
+		android:shadowDx="0"
+		android:shadowDy="-1"
+		android:shadowRadius="0.001"         
+        android:onClick="setFriendProfile"/>
+
+</LinearLayout>
