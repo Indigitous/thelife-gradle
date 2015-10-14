@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -215,24 +216,27 @@ public class SettingsFragment extends NavigationDrawerFragment implements Server
   public boolean onOptionsItemSelected(MenuItem item) {
     if (item.getItemId() == R.id.action_logout) {
       // TODO make logout work
-//      new AlertDialog.Builder(getActivity())
-//          .setTitle(getResources().getString(R.string.logout_prompt))
-//          .setNegativeButton(R.string.cancel, null)
-//          .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//              // log out of app
-//              TheLifeConfiguration.getOwnerDS().setOwner(null);
-//
-//              // go to main screen
-//              Intent intent = new Intent("com.p2c.thelife.Initial");
-//              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//              startActivity(intent);
-//
-//            }
-//          }).show();
+      new AlertDialog.Builder(getActivity())
+          .setTitle(getResources().getString(R.string.logout_prompt))
+          .setNegativeButton(R.string.cancel, null)
+          .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+              // log out of app
+              TheLifeConfiguration.getOwnerDS().setOwner(null);
+
+              // go to main screen
+              Intent intent = new Intent("com.p2c.thelife.Initial");
+              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+              startActivity(intent);
+
+              FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+              fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+            }
+          }).show();
     } else if (item.getItemId() == R.id.action_help) {
       DrawerActivity activity = (DrawerActivity) getActivity();
       activity.showHelpDialog("Help", R.string.activity_settings_help);
