@@ -215,24 +215,24 @@ public class SettingsFragment extends NavigationDrawerFragment implements Server
   public boolean onOptionsItemSelected(MenuItem item) {
     if (item.getItemId() == R.id.action_logout) {
       // TODO make logout work
-//      new AlertDialog.Builder(getActivity())
-//          .setTitle(getResources().getString(R.string.logout_prompt))
-//          .setNegativeButton(R.string.cancel, null)
-//          .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//              // log out of app
-//              TheLifeConfiguration.getOwnerDS().setOwner(null);
-//
-//              // go to main screen
-//              Intent intent = new Intent("com.p2c.thelife.Initial");
-//              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//              startActivity(intent);
-//
-//            }
-//          }).show();
+      new AlertDialog.Builder(getActivity())
+          .setTitle(getResources().getString(R.string.logout_prompt))
+          .setNegativeButton(R.string.cancel, null)
+          .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+              // log out of app
+              TheLifeConfiguration.getOwnerDS().setOwner(null);
+
+              // go to main screen
+              Intent intent = new Intent("com.p2c.thelife.Initial");
+              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+              startActivity(intent);
+
+            }
+          }).show();
     } else if (item.getItemId() == R.id.action_help) {
       DrawerActivity activity = (DrawerActivity) getActivity();
       activity.showHelpDialog("Help", R.string.activity_settings_help);
