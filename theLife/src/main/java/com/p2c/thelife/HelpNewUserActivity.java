@@ -38,7 +38,7 @@ public class HelpNewUserActivity extends Activity {
 	 * @param view
 	 */
 	public void finishNewUserHelp(View view) {
-		Intent intent = new Intent("com.p2c.thelife.EventsForCommunity");
+		Intent intent = new Intent("com.p2c.thelife.Initial");
 		startActivity(intent);		
 	}
 
