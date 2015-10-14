@@ -101,7 +101,7 @@ public abstract class SetupActivityAbstract extends AppCompatActivity implements
 			}
 			
 			// first time user sees the introduction help
-			Intent intent = new Intent(m_isNewUser ? "com.p2c.thelife.NewUserHelp" : "com.p2c.thelife.EventsForCommunity");
+			Intent intent = new Intent(m_isNewUser ? "com.p2c.thelife.NewUserHelp" : "com.p2c.thelife.InitialActivity");
 			
 			startActivity(intent);
 			finish(); // keep this activity off the back stack (out of history)				
