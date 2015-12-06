@@ -102,7 +102,7 @@ public abstract class SetupActivityAbstract extends AppCompatActivity implements
 			
 			// first time user sees the introduction help
 			Intent intent = new Intent("com.p2c.thelife.DrawerActivity");
-			
+
 			startActivity(intent);
 			finish(); // keep this activity off the back stack (out of history)				
 		}
