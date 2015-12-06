@@ -73,26 +73,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.p2c.thelife.EventsForCommunityActivity"
-            android:label="@string/title_community"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="com.p2c.thelife.EventsForCommunity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.p2c.thelife.FriendsActivity"
-            android:label="@string/title_friends"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="com.p2c.thelife.Friends" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name="com.p2c.thelife.GroupsSearchActivity"
             android:label="@string/title_search_groups"
             android:screenOrientation="portrait" >
@@ -216,16 +196,6 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.p2c.thelife.Requests" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.p2c.thelife.SettingsActivity"
-            android:label="@string/title_settings"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="com.p2c.thelife.Settings" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
