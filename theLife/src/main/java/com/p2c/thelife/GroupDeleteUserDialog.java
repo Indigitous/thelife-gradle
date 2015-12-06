@@ -21,8 +21,8 @@ public class GroupDeleteUserDialog extends ServerAccessDialogAbstract {
 		
 		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
 		
-		final GroupModel group = ((GroupActivity)m_listener).getSelectedGroup();
-		final UserModel user = ((GroupActivity)m_listener).getSelectedUser();
+		final GroupModel group = ((GroupFragment)m_listener).getSelectedGroup();
+		final UserModel user = ((GroupFragment)m_listener).getSelectedUser();
 		
 		// Make sure the current user is the group leader, and therefore allowed to delete users from the group
 		if (group.leader_id == TheLifeConfiguration.getOwnerDS().getId()) {

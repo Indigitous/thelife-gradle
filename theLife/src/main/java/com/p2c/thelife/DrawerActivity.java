@@ -45,6 +45,7 @@ public class DrawerActivity extends AppCompatActivity implements OwnerDS.DSChang
     // Add nav items
     dlDrawer.addNavItem(getString(R.string.title_community), R.drawable.menu_community, getString(R.string.title_community), EventsForCommunityFragment.class);
     dlDrawer.addNavItem(getString(R.string.title_friends), R.drawable.menu_friends, getString(R.string.title_friends), FriendsFragment.class);
+    dlDrawer.addNavItem(getString(R.string.title_group), R.drawable.menu_groups, getString(R.string.title_group), GroupFragment.class);
     // Select default
     if (savedInstanceState == null) {
       dlDrawer.selectDrawerItem(0);
