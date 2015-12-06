@@ -113,11 +113,8 @@ public class GroupsFragment extends NavigationDrawerFragment
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_help) {
-            Intent intent = new Intent("com.p2c.thelife.HelpContainer");
-            intent.putExtra("layout", R.layout.activity_groups_help);
-            intent.putExtra("position", SlidingMenuSupport.GROUPS_POSITION);
-            intent.putExtra("home", "com.p2c.thelife.Groups");
-            startActivity(intent);
+            DrawerActivity activity = (DrawerActivity) getActivity();
+            activity.showHelpDialog("Help", R.string.activity_groups_help);
         } else if (item.getItemId() == R.id.action_search) {
             Intent intent = new Intent("com.p2c.thelife.GroupsSearch");
             startActivity(intent);
