@@ -75,7 +75,6 @@
 			        android:drawableLeft="@drawable/upload_image"
 			        android:drawablePadding="2dp"
 			        android:gravity="left|center_vertical"
-			        android:onClick="selectImage"
 			        android:text="@string/upload_image" />
 			    	        
 			    <Button
@@ -85,7 +84,6 @@
 			        android:drawableLeft="@drawable/images_rotate_left"
 			        android:drawablePadding="2dp"
 			        android:gravity="left|center_vertical"
-			        android:onClick="rotateImageCCW"
 			        android:text="@string/rotate_ccw" />
 			    
 			    <Button
@@ -95,7 +93,6 @@
 			        android:drawableLeft="@drawable/images_rotate_right"
 			        android:drawablePadding="2dp"		        
 			        android:gravity="left|center_vertical"
-			        android:onClick="rotateImageCW"
 			        android:text="@string/rotate_cw" />
 			</LinearLayout>
 		</LinearLayout>
