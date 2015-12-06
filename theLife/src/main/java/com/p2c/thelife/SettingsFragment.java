@@ -64,7 +64,10 @@ public class SettingsFragment extends NavigationDrawerFragment implements Server
     // Setup button click listeners
     Button showLicenseButton = (Button) getActivity().findViewById(R.id.show_license);
     ImageView userAvatar = (ImageView) getActivity().findViewById(R.id.settings_image);
+    Button uploadImageButton = (Button) getActivity().findViewById(R.id.upload_image);
     Button updatePhotoPrompt  = (Button) getActivity().findViewById(R.id.settings_update_photo_prompt);
+    Button rotateCwButton  = (Button) getActivity().findViewById(R.id.image_rotate_cw);
+    Button rotateCcwButton = (Button) getActivity().findViewById(R.id.image_rotate_ccw);
 
     Button saveButton = (Button) getActivity().findViewById(R.id.button1);
 
@@ -82,12 +85,34 @@ public class SettingsFragment extends NavigationDrawerFragment implements Server
       }
     });
 
+    uploadImageButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        selectImage(v);
+      }
+    });
+
     updatePhotoPrompt.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         selectImage(v);
       }
     });
+
+    rotateCwButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        rotateImageCW(v);
+      }
+    });
+
+    rotateCcwButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        rotateImageCCW(v);
+      }
+    });
+
     saveButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
