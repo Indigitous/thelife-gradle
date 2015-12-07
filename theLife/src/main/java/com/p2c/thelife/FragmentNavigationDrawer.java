@@ -124,11 +124,14 @@ public class FragmentNavigationDrawer extends DrawerLayout {
     FragmentManager fm = getActivity().getSupportFragmentManager();
     List<Fragment> fragments = fm.getFragments();
 
-    // TODO fix null pointer
-//    if (fragments != null && f != null) {
-//      Fragment currentFragment = fragments.get(fragments.size() - 1);
-//      return currentFragment.getClass() == f.getClass();
-//    }
+    if (fragments != null && f != null) {
+      Fragment currentFragment = fragments.get(fragments.size() - 1);
+      if (currentFragment != null) {
+        return currentFragment.getClass() == f.getClass();
+      } else {
+        return false;
+      }
+    }
 
     return false;
   }
