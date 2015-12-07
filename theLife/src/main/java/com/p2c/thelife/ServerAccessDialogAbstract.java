@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
+
+import java.util.List;
 
 /**
  * Superclass of dialogs that send a message to the server and wait for a response.
@@ -12,7 +17,8 @@ import android.support.v4.app.DialogFragment;
  *
  */
 public abstract class ServerAccessDialogAbstract extends DialogFragment {
-	
+	private static final String TAG = "SADAstract";
+
 	public interface Listener {
 		public void notifyAttemptingServerAccess(String indicator);
 	}	
@@ -24,7 +30,11 @@ public abstract class ServerAccessDialogAbstract extends DialogFragment {
 	
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		m_listener = (Server.ServerListener)activity;
-	}		
+		DrawerActivity a = (DrawerActivity) activity;
+		FragmentManager fm = a.getSupportFragmentManager();
+		List<Fragment> fragments = fm.getFragments();
+
+		m_listener = (Server.ServerListener) fragments.get(fragments.size() - 1);
+	}
 
 }
