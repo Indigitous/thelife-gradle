@@ -8,6 +8,7 @@ android {
         applicationId "com.p2c.thelife"
         minSdkVersion 10
         targetSdkVersion 23
+        multiDexEnabled true
 
         testApplicationId "com.p2c.thelife.test"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
