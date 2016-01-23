@@ -1,13 +1,16 @@
 package com.p2c.thelife;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
 
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -180,9 +183,12 @@ public class GroupsFragment extends NavigationDrawerFragment
         // get the group associated with this view
         GroupModel group = (GroupModel)arg1.getTag();
 
-        Intent intent = new Intent("com.p2c.thelife.Group");
-        intent.putExtra("group_id", group.id);
-        startActivity(intent);
+        Fragment newFragment = GroupFragment.newInstance(group.id);
+        getFragmentManager().beginTransaction()
+//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(R.id.flContent, newFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
