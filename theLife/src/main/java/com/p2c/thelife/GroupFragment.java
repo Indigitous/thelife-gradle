@@ -32,12 +32,24 @@ import com.p2c.thelife.model.UserModel;
 public class GroupFragment extends NavigationDrawerFragment implements Server.ServerListener, GroupDeleteUserDialog.Listener, OnItemClickListener, OnItemLongClickListener {
 	
 	private static final String TAG = "GroupFragment";
+	private static  String KEY_GROUP_ID = "group_id";
 	
 	private GroupModel m_group = null;	
 	private GroupAdapter m_adapter = null;
 	private UserModel m_user = null;
 	private ProgressDialog m_progressDialog = null;	
 	private GroupUsersDS m_groupUsersDS = null;
+
+    // Factory to create new instance of fragment with group ID bundled
+    static GroupFragment newInstance(int groupId) {
+        GroupFragment f = new GroupFragment();
+        Bundle args = new Bundle();
+
+        args.putInt(KEY_GROUP_ID, groupId);
+        f.setArguments(args);
+
+        return f;
+    }
 
 	@Nullable
 	@Override
@@ -55,7 +67,7 @@ public class GroupFragment extends NavigationDrawerFragment implements Server.Se
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		// Get the group
-		int groupId = getActivity().getIntent().getIntExtra("group_id", 0);
+		int groupId = getArguments().getInt(KEY_GROUP_ID, -1);
 		m_group = TheLifeConfiguration.getGroupsDS().findById(groupId);
 
 		// Show the group
