@@ -7,7 +7,7 @@ package com.p2c.thelife;
 ** @author Jordan
 */
 
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentNavigationDrawer extends DrawerLayout {
+  private static final String TAG = "FragmentNavDrawer";
+
   private ActionBarDrawerToggle drawerToggle;
   private LinearLayout drawer;
   private ListView lvDrawer;
@@ -98,15 +100,8 @@ public class FragmentNavigationDrawer extends DrawerLayout {
       e.printStackTrace();
     }
 
-
-    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-
     if (!isCurrentFragment(fragment)) {
-      // Clear the back stack in case navigating from a sub fragment
-      fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-      // Insert the fragment by replacing any existing fragment
-      fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(drawerContainerRes, fragment).commit();
+      setNewFragment(fragment, false);
 
       // Highlight the selected item, update the title, and close the drawer
       lvDrawer.setItemChecked(position, true);
@@ -115,6 +110,25 @@ public class FragmentNavigationDrawer extends DrawerLayout {
     closeDrawer(drawer);
   }
 
+  public void setNewFragment(Fragment frag, boolean subFragment) {
+    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+    DrawerActivity activity = (DrawerActivity) getActivity();
+
+    // Clear the back stack in case navigating from a sub fragment
+    fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+    // Begin new transaction
+    FragmentTransaction transaction = fragmentManager.beginTransaction();
+    transaction.replace(drawerContainerRes, frag);
+
+    if (subFragment) {
+      // Use a backstack to return to parent with <back>
+      transaction.addToBackStack(null);
+    }
+
+    // Commit the fragment transaction
+    transaction.commit();
+  }
 
   public ActionBarDrawerToggle getDrawerToggle() {
     return drawerToggle;
