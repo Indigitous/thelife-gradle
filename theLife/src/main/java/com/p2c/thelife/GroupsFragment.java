@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -54,7 +55,9 @@ public class GroupsFragment extends NavigationDrawerFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
-        getActivity().setTitle(getString(R.string.title_groups));
+        DrawerActivity activity = (DrawerActivity) getActivity();
+        activity.setTitle(getString(R.string.title_groups));
+        activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
     @Nullable
@@ -179,16 +182,13 @@ public class GroupsFragment extends NavigationDrawerFragment
 
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-
         // get the group associated with this view
         GroupModel group = (GroupModel)arg1.getTag();
 
         Fragment newFragment = GroupFragment.newInstance(group.id);
-        getFragmentManager().beginTransaction()
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.flContent, newFragment)
-                .addToBackStack(null)
-                .commit();
+        DrawerActivity activity = (DrawerActivity) getActivity();
+        FragmentNavigationDrawer dl = activity.getDrawerLayout();
+        dl.setNewFragment(newFragment, true);
     }
 
     @Override

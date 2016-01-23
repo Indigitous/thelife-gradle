@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -61,19 +62,23 @@ public class GroupFragment extends NavigationDrawerFragment implements Server.Se
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
-		getActivity().setTitle(getString(R.string.title_group));
-	}
+    DrawerActivity activity = (DrawerActivity) getActivity();
+    activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+  }
 
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		// Get the group
+    DrawerActivity activity = (DrawerActivity) getActivity();
+
+    // Get the group
 		int groupId = getArguments().getInt(KEY_GROUP_ID, -1);
 		m_group = TheLifeConfiguration.getGroupsDS().findById(groupId);
 
 		// Show the group
 		if (m_group != null) {
-			TextView textView = (TextView)getActivity().findViewById(R.id.activity_group_name);
-			textView.setText(m_group.name);
+      activity.setTitle(m_group.name);
+      TextView textView = (TextView)getActivity().findViewById(R.id.activity_group_name);
+      textView.setText(m_group.name);
 			textView = (TextView)getActivity().findViewById(R.id.activity_group_description);
 			textView.setText(m_group.description);
 
