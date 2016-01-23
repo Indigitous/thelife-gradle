@@ -182,16 +182,13 @@ public class GroupsFragment extends NavigationDrawerFragment
 
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-
         // get the group associated with this view
         GroupModel group = (GroupModel)arg1.getTag();
 
         Fragment newFragment = GroupFragment.newInstance(group.id);
-        getFragmentManager().beginTransaction()
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.flContent, newFragment)
-                .addToBackStack(null)
-                .commit();
+        DrawerActivity activity = (DrawerActivity) getActivity();
+        FragmentNavigationDrawer dl = activity.getDrawerLayout();
+        dl.setNewFragment(newFragment, true);
     }
 
     @Override
