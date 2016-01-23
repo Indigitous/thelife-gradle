@@ -67,7 +67,7 @@ public class GroupFragment extends NavigationDrawerFragment implements Server.Se
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		// Get the group
-		int groupId = getActivity().getIntent().getIntExtra("group_id", 0);
+		int groupId = getArguments().getInt(KEY_GROUP_ID, -1);
 		m_group = TheLifeConfiguration.getGroupsDS().findById(groupId);
 
 		// Show the group
