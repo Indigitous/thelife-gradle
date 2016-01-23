@@ -63,20 +63,22 @@ public class GroupFragment extends NavigationDrawerFragment implements Server.Se
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
     DrawerActivity activity = (DrawerActivity) getActivity();
-    activity.setTitle(getString(R.string.title_group));
     activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-	}
+  }
 
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		// Get the group
+    DrawerActivity activity = (DrawerActivity) getActivity();
+
+    // Get the group
 		int groupId = getArguments().getInt(KEY_GROUP_ID, -1);
 		m_group = TheLifeConfiguration.getGroupsDS().findById(groupId);
 
 		// Show the group
 		if (m_group != null) {
-			TextView textView = (TextView)getActivity().findViewById(R.id.activity_group_name);
-			textView.setText(m_group.name);
+      activity.setTitle(m_group.name);
+      TextView textView = (TextView)getActivity().findViewById(R.id.activity_group_name);
+      textView.setText(m_group.name);
 			textView = (TextView)getActivity().findViewById(R.id.activity_group_description);
 			textView.setText(m_group.description);
 
