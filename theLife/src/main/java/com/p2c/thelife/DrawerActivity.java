@@ -129,7 +129,7 @@ public class DrawerActivity extends AppCompatActivity implements OwnerDS.DSChang
     return dlDrawer.isCurrentFragment(f);
   }
 
-  public DrawerLayout getDrawerLayout() {
+  public FragmentNavigationDrawer getDrawerLayout() {
     return dlDrawer;
   }
 
