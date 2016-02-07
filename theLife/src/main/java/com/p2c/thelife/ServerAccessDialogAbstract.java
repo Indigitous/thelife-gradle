@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public abstract class ServerAccessDialogAbstract extends DialogFragment {
 	
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		DrawerActivity a = (DrawerActivity) activity;
+		AppCompatActivity a = (AppCompatActivity) activity;
 		FragmentManager fm = a.getSupportFragmentManager();
 		List<Fragment> fragments = fm.getFragments();
 
