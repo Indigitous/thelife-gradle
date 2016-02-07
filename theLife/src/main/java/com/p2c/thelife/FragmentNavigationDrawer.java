@@ -114,8 +114,10 @@ public class FragmentNavigationDrawer extends DrawerLayout {
     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
     DrawerActivity activity = (DrawerActivity) getActivity();
 
-    // Clear the back stack in case navigating from a sub fragment
-    fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    if (!subFragment) {
+      // Clear the back stack in case navigating from a sub fragment
+      fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
 
     // Begin new transaction
     FragmentTransaction transaction = fragmentManager.beginTransaction();
