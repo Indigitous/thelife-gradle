@@ -125,6 +125,8 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	private void showFirstTimeUsingThresholdHelp(FriendModel.Threshold threshold) {
 		DrawerActivity activity = (DrawerActivity) getActivity();
 
+		// TODO convert to newer dialog
+
 		// set the view and show the help
 		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(activity);
 		LayoutInflater inflater = LayoutInflater.from(activity);
@@ -231,6 +233,8 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	
 	
 	public boolean presentActivities(View view) {
+
+		// TODO convert this activity
 				
 		Intent intent = new Intent("com.p2c.thelife.DeedsForFriend");
 		intent.putExtra("friend_id", m_friend.id);
