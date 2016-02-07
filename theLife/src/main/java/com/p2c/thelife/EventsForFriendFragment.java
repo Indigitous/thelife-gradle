@@ -5,11 +5,15 @@ import org.json.JSONObject;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -30,7 +34,8 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 		implements EventsDS.DSRefreshedListener, ServerListener {
 	
 	private static final String TAG = "EventsForFriendActivity";
-	
+	private static  String KEY_FRIEND_ID = "friend_id";
+
 	private FriendModel m_friend = null;
 	private ListView m_listView = null;
 	private EventsForFriendAdapter m_adapter = null;
@@ -39,33 +44,58 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	// refresh the events list view
 	private Runnable m_displayRefreshRunnable = null;
 
+	// Factory to create new instance of fragment with arguments bundled
+	static EventsForFriendFragment newInstance(int friendId) {
+		EventsForFriendFragment f = new EventsForFriendFragment();
+		Bundle args = new Bundle();
+
+		args.putInt(KEY_FRIEND_ID, friendId);
+		f.setArguments(args);
+
+		return f;
+	}
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState, R.layout.activity_events_for_friend, SlidingMenuSupport.NO_POSITION);
-					
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		setHasOptionsMenu(true);
+		DrawerActivity activity = (DrawerActivity) getActivity();
+		activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+	}
+
+	@Nullable
+	@Override
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		return inflater.inflate(R.layout.activity_events_for_friend, container, false);
+	}
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		DrawerActivity activity = (DrawerActivity) getActivity();
+
 		// Get the friend
-		int friendId = getIntent().getIntExtra("friend_id", 0);
+		int friendId = getArguments().getInt(KEY_FRIEND_ID, 0);
 		m_friend = TheLifeConfiguration.getFriendsDS().findById(friendId);
 		
 		// Show the friend
 		if (m_friend != null) {
-			ImageView imageView = (ImageView)findViewById(R.id.activity_friend_image);
+			ImageView imageView = (ImageView)activity.findViewById(R.id.activity_friend_image);
 			imageView.setImageBitmap(FriendModel.getImage(m_friend.id));
 			
-			TextView nameView = (TextView)findViewById(R.id.activity_friend_name);
+			TextView nameView = (TextView)activity.findViewById(R.id.activity_friend_name);
 			nameView.setText(m_friend.getFullName());
 			
-			TextView thresholdView = (TextView)findViewById(R.id.activity_friend_threshold);
+			TextView thresholdView = (TextView)activity.findViewById(R.id.activity_friend_threshold);
 			thresholdView.setText(m_friend.getThresholdMediumString(getResources()));
 		}
 			
 		// attach the event list view
-		m_listView = (ListView)findViewById(R.id.activity_friend_events);
-		m_adapter = new EventsForFriendAdapter(this, android.R.layout.simple_list_item_1, m_friend);
+		m_listView = (ListView)activity.findViewById(R.id.activity_friend_events);
+		m_adapter = new EventsForFriendAdapter(activity, android.R.layout.simple_list_item_1, m_friend);
 		m_listView.setAdapter(m_adapter);
 		
 		// show a message if there are no events
-		m_noEventsView = (TextView)findViewById(R.id.events_for_friend_none);
+		m_noEventsView = (TextView)activity.findViewById(R.id.events_for_friend_none);
 		m_noEventsView.setVisibility(m_adapter.getCount() == 0 ? View.VISIBLE : View.GONE);
 		
 		// timestamps in events list view refresh runnable
@@ -93,12 +123,13 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	 * Show help for this threshold, since it has not been used before now
 	 */
 	private void showFirstTimeUsingThresholdHelp(FriendModel.Threshold threshold) {
-		
+		DrawerActivity activity = (DrawerActivity) getActivity();
+
 		// set the view and show the help
-		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);			
-		LayoutInflater inflater = LayoutInflater.from(this);
+		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(activity);
+		LayoutInflater inflater = LayoutInflater.from(activity);
 		final View view = inflater.inflate(R.layout.dialog_first_time_using_threshold_help, null);
-		WebView webView = (WebView)view.findViewById(R.id.dialog_using_threshold_help_message);				
+		WebView webView = (WebView)view.findViewById(R.id.dialog_using_threshold_help_message);
 		String help = getResources().getString(R.string.style_sheet_help);
 		help += getThresholdHelp(threshold);
 		webView.loadDataWithBaseURL(null, help, "text/html", "utf-8", null);		
@@ -151,7 +182,7 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	 * Activity in view.
 	 */
 	@Override
-	protected void onResume() {
+	public void onResume() {
 		super.onResume();
 		
 		// data may have changed (e.g. push notifications), so redisplay
@@ -180,7 +211,7 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	 * Activity out of view.
 	 */
 	@Override
-	protected void onPause() {
+	public void onPause() {
 		super.onPause();
 		
 		// stop receiving events in the background
@@ -193,10 +224,9 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.friend, menu);
-		return true;
+		inflater.inflate(R.menu.friend, menu);
 	}
 	
 	
@@ -247,7 +277,8 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	 * Owner has pledged to pray for the event.
 	 */
 	public void pledgeToPray(View view) {
-		
+		DrawerActivity activity = (DrawerActivity) getActivity();
+
 		// update the event immediately (optimistically expect the event will succeed at server)
 		EventModel event = (EventModel)view.getTag();
 		event.hasPledged = true;
@@ -257,17 +288,18 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 		m_adapter.notifyDataSetChanged();
 		
 		// send the pledge to the server
-		Server server = new Server(this);
+		Server server = new Server(activity);
 		server.pledgeToPray(event.id, this, "pledgeToPray");
 	}
 	
 	
 	@Override
 	public void notifyServerResponseAvailable(String indicator,	int httpCode, JSONObject jsonObject, String errorString) {
-		
+		DrawerActivity activity = (DrawerActivity) getActivity();
+
 		// indicator == "pledgeToPray"
 		if (!Utilities.isSuccessfulHttpCode(httpCode)) {			
-			new AlertDialog.Builder(this)
+			new AlertDialog.Builder(activity)
 				.setMessage(getResources().getString(R.string.pledge_error_from_server))
 				.setNegativeButton(R.string.cancel, null).show(); 
 		}		
