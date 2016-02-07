@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#d0d4d9"
-    tools:context=".EventsForFriendActivity" >
+    tools:context=".EventsForFriendFragment" >
     
     <ImageView
         android:layout_width="fill_parent"
