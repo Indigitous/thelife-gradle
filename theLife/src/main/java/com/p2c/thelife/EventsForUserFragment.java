@@ -61,7 +61,7 @@ public class EventsForUserFragment extends NavigationDrawerFragment implements E
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.activity_events_for_user, container, false);
+		return inflater.inflate(R.layout.fragment_events_for_user, container, false);
 	}
 
 	@Override
