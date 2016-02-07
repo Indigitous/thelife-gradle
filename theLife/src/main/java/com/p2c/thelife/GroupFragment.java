@@ -6,7 +6,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -160,14 +162,12 @@ public class GroupFragment extends NavigationDrawerFragment implements Server.Se
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		m_user = (UserModel)arg1.getTag();
 		if (m_user != null) {
-			Intent intent = new Intent("com.p2c.thelife.EventsForUser");
-			intent.putExtra("group_id", m_group.id);			
-			JSONObject userJSON = m_user.toJSON();
-			if (userJSON != null) {
-				intent.putExtra("user_json", userJSON.toString());
-			}
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);			
-			startActivity(intent);
+			Fragment newFragment = EventsForUserFragment
+					.newInstance(m_group.id, m_user.toJSON().toString());
+
+			DrawerActivity activity = (DrawerActivity) getActivity();
+			FragmentNavigationDrawer dl = activity.getDrawerLayout();
+			dl.setNewFragment(newFragment, true);
 		}
 	}
 	

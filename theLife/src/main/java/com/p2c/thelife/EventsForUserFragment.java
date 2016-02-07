@@ -5,10 +5,16 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
+import android.util.EventLog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,10 +30,12 @@ import com.p2c.thelife.model.UserModel;
  * @author clarence
  *
  */
-public class EventsForUserActivity extends SlidingMenuActivity implements EventsDS.DSRefreshedListener {
+public class EventsForUserFragment extends NavigationDrawerFragment implements EventsDS.DSRefreshedListener {
 	
-	private static final String TAG = "EventsForUserActivity";
-	
+	private static final String TAG = "EventsForUserFragment";
+	private static  String KEY_GROUP_ID = "group_id";
+	private static String KEY_USER_JSON = "user_json";
+
 	private int m_groupId = 0;
 	private String m_userJSONString = null;
 	private UserModel m_user = null;	
@@ -38,16 +46,42 @@ public class EventsForUserActivity extends SlidingMenuActivity implements Events
 	// refresh the events list view
 	private Runnable m_displayRefreshRunnable = null;
 
+	// Factory to create new instance of fragment with arguments bundled
+	static EventsForUserFragment newInstance(int groupId, String userJSONString) {
+		EventsForUserFragment f = new EventsForUserFragment();
+		Bundle args = new Bundle();
+
+		args.putInt(KEY_GROUP_ID, groupId);
+		args.putString(KEY_USER_JSON, userJSONString != null ? userJSONString : "");
+		f.setArguments(args);
+
+		return f;
+	}
+
+	@Nullable
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState, R.layout.activity_events_for_user, SlidingMenuSupport.NO_POSITION);
-					
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		return inflater.inflate(R.layout.activity_events_for_user, container, false);
+	}
+
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
+		DrawerActivity activity = (DrawerActivity) getActivity();
+		activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+	}
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		DrawerActivity activity = (DrawerActivity) getActivity();
+
 		// Get the group
-		m_groupId = getIntent().getIntExtra("group_id", 0);
+		m_groupId = getArguments().getInt(KEY_GROUP_ID, 0);
 		GroupModel group = TheLifeConfiguration.getGroupsDS().findById(m_groupId); 
 		
 		// Get the user
-		m_userJSONString = getIntent().getStringExtra("user_json");
+		m_userJSONString = getArguments().getString(KEY_USER_JSON);
 		if (m_userJSONString != null) {
 			try {
 				JSONObject userJSON = new JSONObject(m_userJSONString);
@@ -59,25 +93,25 @@ public class EventsForUserActivity extends SlidingMenuActivity implements Events
 		
 		// Show the user
 		if (m_user != null) {
-			ImageView imageView = (ImageView)findViewById(R.id.activity_user_image);
+			ImageView imageView = (ImageView)activity.findViewById(R.id.activity_user_image);
 			imageView.setImageBitmap(UserModel.getImage(m_user.id));
 			
-			TextView nameView = (TextView)findViewById(R.id.activity_user_name);
+			TextView nameView = (TextView)activity.findViewById(R.id.activity_user_name);
 			nameView.setText(m_user.getFullName());
 			
-			TextView groupRoleView = (TextView)findViewById(R.id.activity_group_role);
+			TextView groupRoleView = (TextView)activity.findViewById(R.id.activity_group_role);
 			if (groupRoleView != null && group != null) {
 				groupRoleView.setText(group.leader_id == m_user.id ? R.string.group_leader : R.string.group_member);
 			}
 		}
 			
 		// attach the event list view
-		m_listView = (ListView)findViewById(R.id.activity_user_events);
-		m_adapter = new EventsForUserAdapter(this, android.R.layout.simple_list_item_1, (m_user != null) ? m_user.id : 0);
+		m_listView = (ListView)activity.findViewById(R.id.activity_user_events);
+		m_adapter = new EventsForUserAdapter(activity, android.R.layout.simple_list_item_1, (m_user != null) ? m_user.id : 0);
 		m_listView.setAdapter(m_adapter);
 		
 		// show a message if there are no events
-		m_noEventsView = (TextView)findViewById(R.id.events_for_user_none);
+		m_noEventsView = (TextView)activity.findViewById(R.id.events_for_user_none);
 		m_noEventsView.setVisibility(m_adapter.getCount() == 0 ? View.VISIBLE : View.GONE);
 		
 		// runnable to refresh the timestamps in the events list view
@@ -100,7 +134,7 @@ public class EventsForUserActivity extends SlidingMenuActivity implements Events
 	 * Activity in view.
 	 */
 	@Override
-	protected void onResume() {
+	public void onResume() {
 		super.onResume();
 		
 		// data may have changed (e.g. push notifications), so redisplay
@@ -129,7 +163,7 @@ public class EventsForUserActivity extends SlidingMenuActivity implements Events
 	 * Activity out of view.
 	 */
 	@Override
-	protected void onPause() {
+	public void onPause() {
 		super.onPause();
 		
 		// stop receiving events in the background
@@ -142,18 +176,15 @@ public class EventsForUserActivity extends SlidingMenuActivity implements Events
 	
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.events_for_user, menu);
-		return true;
+		inflater.inflate(R.menu.events_for_user, menu);
 	}
 	
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == android.R.id.home) {
-			m_support.slideOpen();
-		} else if (item.getItemId() == R.id.action_help) {
+		if (item.getItemId() == R.id.action_help) {
 			Intent intent = new Intent("com.p2c.thelife.HelpContainer");
 			intent.putExtra("layout", R.layout.activity_events_for_user_help);
 			intent.putExtra("position", SlidingMenuSupport.GROUPS_POSITION);
