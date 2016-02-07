@@ -95,7 +95,8 @@ public class EventsForUserFragment extends NavigationDrawerFragment implements E
 		if (m_user != null) {
 			ImageView imageView = (ImageView)activity.findViewById(R.id.activity_user_image);
 			imageView.setImageBitmap(UserModel.getImage(m_user.id));
-			
+
+			activity.setTitle(m_user.getFullName());
 			TextView nameView = (TextView)activity.findViewById(R.id.activity_user_name);
 			nameView.setText(m_user.getFullName());
 			
