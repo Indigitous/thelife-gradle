@@ -140,7 +140,6 @@ public class FriendsFragment extends NavigationDrawerFragment implements Abstrac
     } else if (item.getItemId() == R.id.action_new) {
       Fragment newFragment = new FriendsImportFragment();
       getFragmentManager().beginTransaction()
-          .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
           .replace(R.id.flContent, newFragment)
           .addToBackStack(null)
           .commit();
