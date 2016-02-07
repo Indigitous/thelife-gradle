@@ -185,13 +185,8 @@ public class EventsForUserFragment extends NavigationDrawerFragment implements E
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_help) {
-			Intent intent = new Intent("com.p2c.thelife.HelpContainer");
-			intent.putExtra("layout", R.layout.activity_events_for_user_help);
-			intent.putExtra("position", SlidingMenuSupport.GROUPS_POSITION);
-			intent.putExtra("home", "com.p2c.thelife.EventsForUser");
-			intent.putExtra("group_id", m_groupId);
-			intent.putExtra("user_json", m_userJSONString);			
-			startActivity(intent);
+			DrawerActivity activity = (DrawerActivity) getActivity();
+			activity.showHelpDialog("Help", R.string.activity_events_for_user_help);
 		}
 		
 		return true;
