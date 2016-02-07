@@ -142,24 +142,14 @@ public class GroupFragment extends NavigationDrawerFragment implements Server.Se
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_help) {
-			Intent intent = new Intent("com.p2c.thelife.HelpContainer");
-			intent.putExtra("layout", R.layout.activity_group_help);
-			intent.putExtra("position", SlidingMenuSupport.GROUPS_POSITION);
-			intent.putExtra("home", "com.p2c.thelife.Group");
-			if (m_group != null) {
-				intent.putExtra("group_id", m_group.id);
-			}
-			startActivity(intent);
+			DrawerActivity activity = (DrawerActivity) getActivity();
+			activity.showHelpDialog("Help", R.string.activity_group_help);
 		} else if (item.getItemId() == R.id.action_new) {
 			if (m_group != null) {
 				Intent intent = new Intent("com.p2c.thelife.GroupInvite");
 				intent.putExtra("group_id", m_group.id);
 				startActivity(intent);
 			}
-		}  else if (item.getItemId() == android.R.id.home) {
-			Intent intent = new Intent("com.p2c.thelife.Groups");
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);			
-			startActivity(intent);			
 		}
 		
 		return true;
