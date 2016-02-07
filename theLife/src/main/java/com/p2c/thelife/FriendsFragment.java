@@ -53,6 +53,15 @@ public class FriendsFragment extends NavigationDrawerFragment implements Abstrac
     Log.d(TAG, "Friend: " + mFriend);
 
     // TODO fragment transaction for clicking on friend
+
+    if (mFriend != null) {
+      Fragment newFragment = EventsForFriendFragment
+          .newInstance(mFriend.id);
+
+      DrawerActivity activity = (DrawerActivity) getActivity();
+      FragmentNavigationDrawer dl = activity.getDrawerLayout();
+      dl.setNewFragment(newFragment, true);
+    }
   }
 
   @Nullable
