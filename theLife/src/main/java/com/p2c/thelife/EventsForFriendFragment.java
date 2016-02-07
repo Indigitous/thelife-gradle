@@ -66,7 +66,7 @@ public class EventsForFriendFragment extends NavigationDrawerFragment
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.activity_events_for_friend, container, false);
+		return inflater.inflate(R.layout.fragment_events_for_friend, container, false);
 	}
 
 	@Override
